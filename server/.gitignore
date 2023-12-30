@@ -1,0 +1,34 @@
+# Dependencias
+node_modules/
+
+# Archivo de configuración de npm
+package-lock.json
+
+# Archivos generados durante la construcción
+/build/
+
+# Archivos de entorno
+.env
+.env.local
+.env.*.local
+
+# Logs
+logs/
+*.log
+
+# Archivos de respaldo
+*.bak
+*.backup
+*.swp
+
+# Archivos de pruebas
+/coverage/
+/.nyc_output/
+
+# Archivos de compilación nativa
+node_modules/
+*.node
+
+# Dependencias específicas del sistema (por ejemplo, para macOS o Windows)
+.DS_Store
+Thumbs.db
