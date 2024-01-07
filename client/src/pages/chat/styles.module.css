@@ -42,6 +42,15 @@
   margin-bottom: 24px;
   max-width: 600px;
   padding: 12px;
+  word-wrap: break-word;
+}
+
+.messageAdmin {
+  background: rgb(98, 111, 157);
+  border-radius: 6px;
+  margin-bottom: 24px;
+  max-width: 600px;
+  padding: 12px;
 }
 .msgMeta {
   color: rgb(153, 217, 234);
@@ -54,6 +63,9 @@
 /* Message input and button */
 .sendMessageContainer {
   padding: 16px 20px 20px 16px;
+  display: flex; /* Activa Flexbox */
+  align-items: flex-end; /* Alinea verticalmente los elementos al final (parte inferior) */
+  gap: 10px;
 }
 .messageInput {
   padding: 14px;
@@ -62,4 +74,7 @@
   border-radius: 6px;
   border: 1px solid rgb(153, 217, 234);
   font-size: 0.9rem;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  resize: vertical;
 }

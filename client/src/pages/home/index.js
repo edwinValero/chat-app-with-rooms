@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import styles from './styles.module.css';
 import { useNavigate } from 'react-router-dom';
 
@@ -7,11 +8,16 @@ const Home = ({ username, setUsername, room, setRoom, socket }) => {
 
   const joinRoom = () => {
     if (room !== '' && username !== '') {
-      socket.emit('join_room', { username, room });
       navigate('/chat', { replace: true });
     }
   };
 
+  useEffect(() => { 
+    if (room && username ) {
+      navigate('/chat', { replace: true });
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   
 
   return (

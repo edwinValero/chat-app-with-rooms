@@ -1,15 +1,16 @@
 import './App.css';
-import { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import io from 'socket.io-client'; 
 import Home from './pages/home';
 import Chat from './pages/chat';
+import useLocalStorage from './utils/useLocalStorage';
 
 const socket = io.connect('http://localhost:4000');
 
 function App() {
-  const [username, setUsername] = useState('');
-  const [room, setRoom] = useState('');
+  const [username, setUsername] = useLocalStorage('username','');
+  const [room, setRoom] = useLocalStorage('room', '');
+  
   return (
     <Router>
       <div className='App'>
@@ -18,17 +19,25 @@ function App() {
             path='/' 
             element={
               <Home 
-                username={username} // Add this
-                setUsername={setUsername} // Add this
-                room={room} // Add this
-                setRoom={setRoom} // Add this
-                socket={socket}
+                username={username}
+                setUsername={setUsername} 
+                room={room}
+                setRoom={setRoom} 
+                socket={socket} 
               />
             } 
           />
            <Route
             path='/chat'
-            element={<Chat username={username} room={room} socket={socket} />}
+            element={
+              <Chat 
+                username={username} 
+                setUsername={setUsername} 
+                room={room} 
+                setRoom={setRoom} 
+                socket={socket} 
+              />
+            }
           />
         </Routes>
       </div>

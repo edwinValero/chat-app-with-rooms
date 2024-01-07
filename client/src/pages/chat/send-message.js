@@ -15,13 +15,19 @@ const SendMessage = ({ socket, username, room }) => {
 
   return (
     <div className={styles.sendMessageContainer}>
-      <input
+      <textarea
         className={styles.messageInput}
         placeholder='Message...'
         onChange={(e) => setMessage(e.target.value)}
+        onKeyDown={(e) => {
+          if (e.key === 'Enter' && !e.shiftKey) {
+            e.preventDefault();
+            sendMessage();
+          }
+        }}
         value={message}
       />
-      <button className='btn btn-primary' onClick={sendMessage}>
+      <button className='btn btn-primary' onClick={sendMessage} >
         Send Message
       </button>
     </div>

@@ -2,7 +2,7 @@ import styles from './styles.module.css';
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const RoomAndUsers = ({ socket, username, room }) => {
+const RoomAndUsers = ({ socket, username, setUsername, room, setRoom }) => {
   const [roomUsers, setRoomUsers] = useState([]);
 
   const navigate = useNavigate();
@@ -19,6 +19,8 @@ const RoomAndUsers = ({ socket, username, room }) => {
   const leaveRoom = () => {
     const __createdtime__ = Date.now();
     socket.emit('leave_room', { username, room, __createdtime__ });
+    setUsername('');
+    setRoom('');
     // Redirect to home page
     navigate('/', { replace: true });
   };
